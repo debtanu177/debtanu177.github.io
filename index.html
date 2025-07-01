@@ -1,56 +1,218 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Debtanu</title>
+<title>Debtanu Gupta</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-    body,h1 {font-family: "Raleway", sans-serif}
-    body, html {height: 100%}
-    .bgimg {
-      background-image: url('img/bg1.jpg');
-      min-height: 100%;
-      background-position: center;
-      background-size: cover;
-      filter: brightness(70%);
-    }
-    .typing-container {
-      font-size: 8rem;
-      font-family: 'Courier New', monospace;
-      color: white;
-      text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 5px solid white;
-      width: 0;
-      animation: typing 3s steps(20, end) forwards, blink 0.7s step-end infinite;
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
-    }
+body, html {
+  height: 100%;
+  line-height: 1.8;
+  scroll-behavior: smooth;
+}
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 15ch } /* Adjust based on name length */
-    }
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("img/bg1.jpg");
+  min-height: 100%;
+  background-attachment: fixed;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("img/bg1.jpg");
+}
 
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+.typing {
+  display: inline-block;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(20, end), blink 0.7s step-end infinite;
+  font-size: 36px;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 13ch; } /* Adjust based on character count */
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bouncing Dots Animation */
+.bouncing-dots span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  background-color: white;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.bouncing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bouncing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+  } 
+  40% {
+    transform: translateY(-20px);
+  }
+}
+
 </style>
 </head>
 <body>
 
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-  <div class="w3-display-middle">
-<!--     <h1 class="w3-jumbo w3-animate-top">Debtanu Gupta</h1>
-    <hr class="w3-border-grey" style="margin:auto;width:40%"> -->
-    <div class="typing-container">Debtanu Gupta</div>
-  </div>
-  <div class="w3-display-bottomleft w3-padding-large">
-    Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+<!-- Loading animation -->
+<div id="loader-wrapper">
+  <div class="bouncing-dots">
+    <span></span><span></span><span></span>
   </div>
 </div>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#experience" class="w3-bar-item w3-button"> Experience</a>
+      <a href="#work" class="w3-bar-item w3-button"> Work</a>
+      <a href="#pricing" class="w3-bar-item w3-button"> Contact</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+  <a href="#experience" onclick="w3_close()" class="w3-bar-item w3-button">Experience</a>
+  <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">Contact</a>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small typing">Debtanu Gupta</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
+    <span class="w3-large">Stop wasting valuable time with projects that just isn't you.</span>
+    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Check out my Work!</a></p>
+  </div> 
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">About Me</h3>
+  <p class="w3-center w3-large">Will be Updated soon</p>
+  
+</div>
+
+
+<!-- Experience Section -->
+<div class="w3-container" style="padding:128px 16px" id="experience">
+  <h3 class="w3-center">Experience</h3>
+  <p class="w3-center w3-large">Will be updated soon</p>
+  
+</div>
+
+<!-- Work Section -->
+<div class="w3-container" style="padding:128px 16px" id="work">
+  <h3 class="w3-center">My Work</h3>
+  <p class="w3-center w3-large">Will be updated Soon!</p>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+
+window.addEventListener("load", function () {
+    setTimeout(function () {
+      const loader = document.getElementById("loader-wrapper");
+      loader.style.transition = "opacity 0.5s ease";
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 500);
+    }, 3000); // 3 seconds delay after page load
+  });
+
+
+</script>
 
 </body>
 </html>
